@@ -1,0 +1,60 @@
+name: Requisito funcional
+description: Criar uma Issue para um requisito funcional do Menuza
+title: "RFXX — "
+labels:
+  - requirement
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Requisito funcional
+
+        Preencha os critérios de aceitação, regras de negócio e subtarefas relacionados a este requisito.
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceitação
+      description: Liste as condições que devem ser atendidas para considerar o requisito concluído.
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: regras
+    attributes:
+      label: Regras de negócio
+      description: Liste as regras que devem ser respeitadas pelo sistema.
+      value: |
+        - 
+        - 
+    validations:
+      required: true
+
+  - type: textarea
+    id: subtarefas
+    attributes:
+      label: Subtarefas
+      description: Divida o requisito em tarefas menores de implementação.
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: referencias
+    attributes:
+      label: Referências
+      description: Adicione links ou informações relacionadas ao requisito.
+      placeholder: |
+        Figma:
+        Documentação:
+        Issues relacionadas:
+    validations:
+      required: false

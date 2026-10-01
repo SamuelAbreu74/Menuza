@@ -1,0 +1,124 @@
+name: Melhoria
+description: Sugerir uma melhoria ou nova funcionalidade para o Menuza
+title: "MELHORIA — "
+labels:
+  - enhancement
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Proposta de melhoria
+
+        Utilize este formulário para registrar novas funcionalidades,
+        melhorias de experiência, ajustes de comportamento ou melhorias técnicas.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição da melhoria
+      description: Explique o que você gostaria de melhorar ou adicionar.
+      placeholder: |
+        Exemplo:
+        Adicionar uma opção para duplicar um produto já cadastrado,
+        evitando que o administrador precise preencher todos os campos novamente.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema ou necessidade
+      description: Explique qual problema essa melhoria resolve ou qual necessidade ela atende.
+      placeholder: |
+        Exemplo:
+        Restaurantes com muitos produtos acabam gastando tempo
+        cadastrando pratos semelhantes manualmente.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Solução proposta
+      description: Descreva como a melhoria poderia funcionar.
+      placeholder: |
+        Exemplo:
+        Adicionar um botão "Duplicar" na listagem de produtos,
+        criando uma cópia editável do produto selecionado.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de melhoria
+      description: Qual categoria melhor representa esta proposta?
+      options:
+        - Nova funcionalidade
+        - Melhoria de UX/UI
+        - Melhoria técnica
+        - Performance
+        - Acessibilidade
+        - Documentação
+        - Refatoração
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: Prioridade sugerida
+      description: Qual a prioridade inicial desta melhoria?
+      options:
+        - Baixa
+        - Média
+        - Alta
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceitação
+      description: Liste as condições que devem ser atendidas para considerar a melhoria concluída.
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: subtarefas
+    attributes:
+      label: Subtarefas
+      description: Divida a implementação em tarefas menores.
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: false
+
+  - type: textarea
+    id: referencias
+    attributes:
+      label: Referências
+      description: Adicione links, protótipos, screenshots ou Issues relacionadas.
+      placeholder: |
+        Figma:
+        Issues relacionadas:
+        Documentação:
+    validations:
+      required: false
+
+  - type: textarea
+    id: observacoes
+    attributes:
+      label: Observações adicionais
+      description: Adicione qualquer informação relevante.
+      placeholder: |
+        Informações adicionais...
+    validations:
+      required: false

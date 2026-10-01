@@ -1,0 +1,99 @@
+name: Bug
+description: Reportar um problema ou comportamento inesperado no Menuza
+title: "BUG — "
+labels:
+  - bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Relatório de Bug
+
+        Descreva o problema encontrado e forneça informações suficientes
+        para que ele possa ser reproduzido e corrigido.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição do problema
+      description: Explique de forma clara o que está acontecendo.
+      placeholder: |
+        Exemplo:
+        Ao tentar cadastrar um produto, o formulário não permite salvar
+        mesmo com todos os campos preenchidos.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduzir
+    attributes:
+      label: Passos para reproduzir
+      description: Informe passo a passo como reproduzir o problema.
+      value: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+
+  - type: textarea
+    id: comportamento_atual
+    attributes:
+      label: Comportamento atual
+      description: O que está acontecendo atualmente?
+      placeholder: |
+        O sistema apresenta...
+    validations:
+      required: true
+
+  - type: textarea
+    id: comportamento_esperado
+    attributes:
+      label: Comportamento esperado
+      description: O que deveria acontecer?
+      placeholder: |
+        O sistema deveria...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidade
+    attributes:
+      label: Severidade
+      description: Qual o impacto do bug?
+      options:
+        - Baixa
+        - Média
+        - Alta
+        - Crítica
+    validations:
+      required: true
+
+  - type: input
+    id: ambiente
+    attributes:
+      label: Ambiente
+      description: Informe onde o problema ocorreu.
+      placeholder: "Ex: Ubuntu 24.04, Firefox, ambiente local"
+
+  - type: textarea
+    id: evidencias
+    attributes:
+      label: Evidências
+      description: Adicione screenshots, vídeos, logs ou outras informações úteis.
+      placeholder: |
+        Screenshots:
+        Logs:
+        Vídeos:
+        Links:
+
+  - type: textarea
+    id: observacoes
+    attributes:
+      label: Observações adicionais
+      description: Adicione qualquer informação que possa ajudar na investigação.
+      placeholder: |
+        Informações adicionais...
+    validations:
+      required: false
