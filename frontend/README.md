@@ -361,7 +361,7 @@ cada um executado em containers independentes.
 - [x] Definição inicial do produto
 - [x] Levantamento inicial de requisitos
 - [x] Protótipo da interface
-- [ ] Refinamento do design
+- [x] Refinamento do design
 
 ### Fase 2 — MVP Frontend
 
