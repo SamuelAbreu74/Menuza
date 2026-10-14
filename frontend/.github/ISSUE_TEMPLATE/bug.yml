@@ -1,6 +1,6 @@
 name: Bug
 description: Reportar um problema ou comportamento inesperado no Menuza
-title: 'BUG — '
+title: "BUG — "
 labels:
   - bug
 
@@ -33,7 +33,7 @@ body:
       value: |
         1. 
         2. 
-        3.
+        3. 
     validations:
       required: true
 
@@ -75,7 +75,7 @@ body:
     attributes:
       label: Ambiente
       description: Informe onde o problema ocorreu.
-      placeholder: 'Ex: Ubuntu 24.04, Firefox, ambiente local'
+      placeholder: "Ex: Ubuntu 24.04, Firefox, ambiente local"
 
   - type: textarea
     id: evidencias
