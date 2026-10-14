@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -6,5 +6,5 @@ export default function Home() {
       <h1>Menuza</h1>
       <h2>O cardápio digital para o seu restaurante</h2>
     </div>
-  );
+  )
 }

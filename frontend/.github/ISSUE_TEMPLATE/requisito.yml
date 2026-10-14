@@ -1,6 +1,6 @@
 name: Requisito funcional
 description: Criar uma Issue para um requisito funcional do Menuza
-title: "RFXX — "
+title: 'RFXX — '
 labels:
   - requirement
 
@@ -20,7 +20,7 @@ body:
       value: |
         - [ ] 
         - [ ] 
-        - [ ] 
+        - [ ]
     validations:
       required: true
 
@@ -31,7 +31,7 @@ body:
       description: Liste as regras que devem ser respeitadas pelo sistema.
       value: |
         - 
-        - 
+        -
     validations:
       required: true
 
@@ -43,7 +43,7 @@ body:
       value: |
         - [ ] 
         - [ ] 
-        - [ ] 
+        - [ ]
     validations:
       required: true
 
