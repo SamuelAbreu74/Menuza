@@ -366,7 +366,7 @@ cada um executado em containers independentes.
 ### Fase 2 — MVP Frontend
 
 - [x] Configuração do projeto Next.js
-- [ ] Estrutura de páginas
+- [x] Estrutura de páginas
 - [ ] Cardápio público
 - [ ] Dashboard
 - [ ] Categorias
