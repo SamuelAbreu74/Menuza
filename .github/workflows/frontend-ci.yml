@@ -1,0 +1,30 @@
+name: Frontend CI
+
+on:
+  push:
+
+jobs:
+  frontend:
+    defaults:
+      run:
+        working-directory: ./frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter código do repositório
+        uses: actions/checkout@v7
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.13.1'
+
+      - name: Instalação
+        run: npm ci
+
+      - name: Rodando Lint
+        run: npm run lint
+
+      - name: Rodando Build
+        run: npm run build
+      
+        
