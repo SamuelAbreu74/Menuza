@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function BuscarCardapio() {
@@ -8,7 +8,7 @@ export default function BuscarCardapio() {
     const router = useRouter();
 
     // Leva o usuário para o cardápio do restaurante
-    function handleCardapio(event: React.FormEvent<HTMLFormElement>) {
+    function handleCardapio(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
 
         const slug = nomeDoCardapio
