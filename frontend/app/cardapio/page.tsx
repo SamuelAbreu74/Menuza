@@ -28,7 +28,7 @@ export default function BuscarCardapio() {
     }
 
     return (
-        <div className="flex flex-1 flex-col items-center justify-center bg-green-950 font-sans dark:bg-black">
+        <div className="flex flex-1 flex-col items-center justify-center bg-orange-700 font-sans dark:bg-black">
             <h1 className="mb-8 text-2xl font-bold text-white">
                 Digite o nome do seu cardápio
             </h1>

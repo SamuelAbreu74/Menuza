@@ -1,8 +1,15 @@
+import Image from 'next/image'
+import logo from "../assets/icone.png"
+
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-green-950 font-sans dark:bg-black">
-      <h1 className="text-4xl font-bold mb-4 text-white">Menuza</h1>
-      <h2 className="text-2xl mb-8 text-white">O cardápio digital para o seu restaurante</h2>
-    </div>
+    <main className="flex flex-col flex-1 items-center justify-center text-center bg-background font-sans dark:bg-background">
+      <div className="flex gap-2 items-end">
+        <Image src={logo} alt='logo-menuza' width={45} />
+        <h1 className="text-4xl font-bold  text-black dark: ext-foreground">Menuza</h1>
+      </div>
+      <h2 className="text-2xl mb-8 text-black dark:text-foreground">O cardápio digital para o seu restaurante.</h2>
+    </main>
   );
 }
