@@ -3,6 +3,6 @@ export interface Restaurant {
   id: string;
   name: string;
   slug: string;
-  description: string;
+  description: string | null;
   imageUrl: string | null;
 }
