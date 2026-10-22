@@ -3,11 +3,16 @@ import logo from '@/assets/icone.png';
 import restaurant_image from "@/assets/restaurant-profile-placeholder.jpg"
 import SearchBar from '@/components/ui/searchBar';
 
+import { getMockMenuBySlug } from '@/data/mock';
 
 
-export default function MenuHeader() {
+export default async function MenuHeader({ slug }: { slug: string }) {
+    const menu = getMockMenuBySlug(slug)
+
+
+
     return (
-        <header className='bg-[#003836] w-full flex flex-col justify-start items-center gap-5 mb-10 pt-5 border-b-white border-b'>
+        <header className='bg-[#003836] w-full flex flex-col justify-center items-center gap-5 mb-10 pt-5 border-b-white border-b'>
             {/* Logotipo do Menuza */}
             <div className="flex flex-row items-end">
                 <Image src={logo} alt="Logo" width={40} />
@@ -15,18 +20,18 @@ export default function MenuHeader() {
             </div>
 
             {/* Informações do restaurante */}
-            <div className='flex flex-col items-center justify-center gap-8 pr-5 pl-5'>
+            <div className='flex flex-col md:items-start items-center justify-center gap-8 pr-5 pl-5 max-w-3xl'>
                 <div className='flex flex-col md:flex-row md:items-end md:justify-center items-center gap-5'>
-                    <Image className='rounded-full border border-gray-500' src={restaurant_image} alt='restaurant-profile-image' width={100}  />
-                    <h2 className='w-full text-5xl md:text-7xl font-genty'>Sabor da Vila</h2>
+                    <Image className='rounded-full border border-gray-500' src={restaurant_image} alt='restaurant-profile-image' width={100} />
+                    <h2 className='w-full text-5xl md:text-7xl font-genty'>{menu?.restaurant.name}</h2>
                 </div>
-                <p className='w-full text-xl md:text-2xl font-montserrat font-light'>Descrição do restaurante (1 linha)</p>
+                <p className='w-full md:text-start text-center text-xl md:text-2xl font-montserrat font-light'>{menu?.restaurant.description}</p>
 
-                <div className='w-full flex flex-col md:flex-row md:items-start justify-start gap-5'>
+                <div className='w-full flex flex-col md:flex-row md:items-start items-start justify-start md:gap-20 gap-5'>
                     {/* Svg de relógio */}
                     <div className='flex flex-row gap-2'>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
-                        
+
                         <p className='font-montserrat font-light'>Ter a Dom | 11h às 23h</p>
                     </div>
 
@@ -37,7 +42,6 @@ export default function MenuHeader() {
                         <p className='font-montserrat font-light'>Rua das Flores, 153 - Aquiraz</p>
                     </div>
                 </div>
-                
                 <div className="w-full flex items-center justify-center translate-y-6.25">
                     <SearchBar />
                 </div>
