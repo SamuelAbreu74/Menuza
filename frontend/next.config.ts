@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    domains: ["images.unsplash.com", "unsplash.com"],
+  }
 };
 
 export default nextConfig;
