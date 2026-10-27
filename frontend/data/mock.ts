@@ -13,7 +13,7 @@ export const mockRestaurant: Restaurant[] = [
         name: "Sabor da Vila",
         slug: "sabor-da-vila",
         description: "Comida brasileira feita com carinho, pratos executivos e carnes na brasa.",
-        imageUrl: null,
+        imageUrl: 'https://images.unsplash.com/photo-1592212671263-5da5627c5819?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
     },
     {
         id: "restaurant-tempero-mineiro",
@@ -21,6 +21,13 @@ export const mockRestaurant: Restaurant[] = [
         slug: "tempero-mineiro",
         description: "Comida mineira autêntica e saborosa, com receitas tradicionais passadas por gerações.",
         imageUrl: null,
+    },
+    {
+        id: "restaurant-cafeteria-helena",
+        name: "Cafeteria Helena",
+        slug: "cafeteria-helena",
+        description: "Conforto, aroma e sabor em cada detalhe, tudo feito artesanalmente.",
+        imageUrl: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     }
 ];
 
