@@ -1,4 +1,5 @@
-import MenuHeader from "@/components/menu/menuHeader";
+import CategoryList from "@/components/menu/CategoryList";
+import MenuHeader from "@/components/menu/MenuHeader";
 import { getMockMenuBySlug } from "@/data/mock";
 import { redirect } from "next/navigation";
 interface CardapioProps {
@@ -18,8 +19,10 @@ export default async function Cardapio({ params }: CardapioProps) {
     }
 
     return (
-        <div className="flex flex-col flex-1 justify-start  bg-background font-sans dark:bg-black text-white">
+        <div className="flex flex-col flex-1  justify-start  bg-background font-sans dark:bg-black text-white">
             <MenuHeader slug={slug}/>
+            <h1>teste</h1>
+            <CategoryList slug={slug}/>
         </div>
     )
 }
