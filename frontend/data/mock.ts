@@ -1,6 +1,7 @@
 import type { Category } from "../types/category";
 import type { Product } from "../types/product";
 import type { Restaurant } from "../types/restaurant";
+import placeHolderImage from "../assets/food-placeholder.svg"
 
 /**
  * Dados fictícios para desenvolver o frontend antes da integração com a API.
@@ -84,7 +85,7 @@ export const mockCategories: Category[] = [
     }
 ];
 
-const placeholderImage = "/images/mock/food-placeholder.svg";
+
 
 export const mockProducts: Product[] = [
     // Sabor da Vila
@@ -94,7 +95,7 @@ export const mockProducts: Product[] = [
         name: "Suco natural",
         description: "Suco preparado na hora.",
         price: 8,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -103,7 +104,7 @@ export const mockProducts: Product[] = [
         name: "Agua",
         description: "Agua",
         price: 2,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -112,7 +113,7 @@ export const mockProducts: Product[] = [
         name: "Executivo 01",
         description: "Executivo com frango",
         price: 25,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -121,7 +122,7 @@ export const mockProducts: Product[] = [
         name: "Executivo 02",
         description: "Executivo com carne",
         price: 25,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -130,7 +131,7 @@ export const mockProducts: Product[] = [
         name: "Executivo 03",
         description: "Executivo com peixe",
         price: 25,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -139,7 +140,7 @@ export const mockProducts: Product[] = [
         name: "Enrroladinho de salsicha",
         description: "Delicioso enrroladinho de salsicha",
         price: 10,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -148,7 +149,7 @@ export const mockProducts: Product[] = [
         name: "Bolinha de queijo",
         description: "Deliciosa bolinha de queijo",
         price: 10,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: false,
     },
     {
@@ -157,7 +158,7 @@ export const mockProducts: Product[] = [
         name: "Coxinha",
         description: "Deliciosa coxinha de frango",
         price: 10,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -166,7 +167,7 @@ export const mockProducts: Product[] = [
         name: "Empadao",
         description: "Delicioso empadão de frango",
         price: 15,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -175,7 +176,7 @@ export const mockProducts: Product[] = [
         name: "Kibe",
         description: "Delicioso kibe de carne",
         price: 8,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: false,
     },
     {
@@ -184,7 +185,7 @@ export const mockProducts: Product[] = [
         name: "Brigadeiro",
         description: "Delicioso brigadeiro",
         price: 5,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -193,7 +194,7 @@ export const mockProducts: Product[] = [
         name: "Beijinho",
         description: "Delicioso beijinho",
         price: 5,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -202,7 +203,7 @@ export const mockProducts: Product[] = [
         name: "Pudim",
         description: "Delicioso pudim de leite condensado",
         price: 5,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     // Tempero Mineiro
@@ -212,7 +213,7 @@ export const mockProducts: Product[] = [
         name: "Café coado",
         description: "Café coado na hora.",
         price: 5,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     // cafeteria helena
@@ -222,7 +223,7 @@ export const mockProducts: Product[] = [
         name: "Café expresso",
         description: "Café expresso preparado na hora.",
         price: 6,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
     {
@@ -231,7 +232,7 @@ export const mockProducts: Product[] = [
         name: "Bolo de chocolate",
         description: "Bolo de chocolate feito com ingredientes selecionados.",
         price: 12,
-        imageUrl: placeholderImage,
+        imageUrl: placeHolderImage,
         available: true,
     },
 ];
