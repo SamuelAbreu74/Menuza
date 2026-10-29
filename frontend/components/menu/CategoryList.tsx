@@ -29,7 +29,7 @@ export default async function CategoryList({ slug }: { slug: string }) {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 w-fit ">
                             {products.filter(product => product.categoryId === category.id).map(product => (
                                 <div key={product.id}>
-                                    <ProductCard product={product} />
+                                    <ProductCard product={product} category={category} />
                                 </div>
                             ))}
                         </div>
