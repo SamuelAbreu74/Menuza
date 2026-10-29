@@ -4,6 +4,8 @@ import CategoryListSkeleton from "@/components/menu/CategoryListSkeleton";
 import MenuHeader from "@/components/menu/MenuHeader";
 import { getMockMenuBySlug } from "@/data/mock";
 import { redirect } from "next/navigation";
+import CategoryNavBar from "@/components/menu/CategoryNavBar";
+
 interface CardapioProps {
     params: Promise<{
         slug: string;
@@ -11,7 +13,7 @@ interface CardapioProps {
 }
 
 
-export default async function Cardapio({ params }: CardapioProps) {
+export default async function Cardapio({ params }: CardapioProps) { 
     const { slug } = await params;
     const menu = getMockMenuBySlug(slug)
 
@@ -21,8 +23,9 @@ export default async function Cardapio({ params }: CardapioProps) {
     }
 
     return (
-        <div className="flex flex-col flex-1  justify-start  bg-background font-sans dark:bg-black text-white">
+        <div className="flex flex-col justify-start  bg-background font-sans dark:bg-black text-white">
             <MenuHeader slug={slug} />
+            <CategoryNavBar restaurantId={menu.restaurant.id} />
             <Suspense fallback={<CategoryListSkeleton />}>
                 <CategoryList slug={slug} />
             </Suspense>
