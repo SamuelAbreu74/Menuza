@@ -75,14 +75,14 @@ O projeto será desenvolvido de forma incremental, começando por uma versão si
 
 ### Cardápio público
 
-- [ ] Visualização do restaurante
-- [ ] Visualização das categorias
-- [ ] Visualização dos produtos
-- [ ] Preço e descrição dos produtos
-- [ ] Imagens dos pratos
-- [ ] Indicação de produtos indisponíveis
+- [x] Visualização do restaurante
+- [x] Visualização das categorias
+- [x] Visualização dos produtos
+- [x] Preço e descrição dos produtos
+- [x] Imagens dos pratos
+- [x] Indicação de produtos indisponíveis
 - [ ] Navegação por categorias
-- [ ] Layout responsivo e mobile-first
+- [x] Layout responsivo e mobile-first
 
 ### Área administrativa
 
