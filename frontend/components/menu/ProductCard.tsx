@@ -27,10 +27,14 @@ export default function ProductCard({ product, category }: { product: Product, c
                     <p className="font-genty">{product.name}</p>
                     <p className="font-montserrat sm:text-sm text-xs text-gray-600">{product.description}</p>
                 </div>
-                <p className="font-montserrat font-semibold text-md text-orange-800">
-                    {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                </p>
-
+                <div className="flex flex-col md:flex-row justify-start md:justify-start items-start md:items-center gap-2">
+                    <p className="font-montserrat font-semibold text-md text-orange-800">
+                        {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                    </p>
+                    {!product.available && (
+                        <span className="text-gray-900 font-semibold font-montserrat text-sm bg-gray-400 rounded-xl p-2">Indisponível</span>
+                    )}
+                </div>
 
             </div>
             {product.imageUrl && (
