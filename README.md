@@ -81,7 +81,7 @@ O projeto será desenvolvido de forma incremental, começando por uma versão si
 - [x] Preço e descrição dos produtos
 - [x] Imagens dos pratos
 - [x] Indicação de produtos indisponíveis
-- [ ] Navegação por categorias
+- [x] Navegação por categorias
 - [x] Layout responsivo e mobile-first
 
 ### Área administrativa
