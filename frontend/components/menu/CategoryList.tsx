@@ -13,6 +13,13 @@ export default async function CategoryList({ slug }: { slug: string }) {
         <div className="flex flex-col px-4 md:px-8 pb-12 text-black w-full max-w-7xl mx-auto">
             <CategorySectionObserver categoryIds={categoryIds} />
             {/* Categorias */}
+
+            {!categories || categories.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-8">
+                    <h1 className="text-gray-500 text-sm md:text-lg font-montserrat">Nenhuma categoria cadastrada</h1>
+                </div>
+            )}
+
             {categories.map(category => (
                 <div key={category.id} id={category.id} className="flex flex-col gap-5 pt-6 scroll-mt-24 pb-65">
                     <div className="flex flex-row gap-4 items-center">
@@ -39,6 +46,7 @@ export default async function CategoryList({ slug }: { slug: string }) {
                     )}
                 </div>
             ))}
+
         </div>
     )
 }
