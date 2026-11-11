@@ -367,13 +367,13 @@ cada um executado em containers independentes.
 
 - [x] Configuração do projeto Next.js
 - [x] Estrutura de páginas
-- [ ] Cardápio público
-- [ ] Dashboard
-- [ ] Categorias
-- [ ] Produtos
+- [x] Cardápio público
+- [ ] Dashboard (admin)
+- [ ] Categorias (admin)
+- [ ] Produtos (admin)
 - [ ] Estados de interface
 - [ ] Responsividade
-- [ ] QR Code
+- [ ] QR Code (admin)
 
 ### Fase 3 — Backend
 
