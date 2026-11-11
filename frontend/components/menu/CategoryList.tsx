@@ -1,17 +1,20 @@
 
 import { getMockCategoriesByRestaurant, getMockMenuBySlug, getMockProductsByCategory } from "@/data/mock"
 import ProductCard from "./ProductCard";
+import { CategorySectionObserver } from "./ActiveCategoryContext";
 
 export default async function CategoryList({ slug }: { slug: string }) {
     const restaurant = getMockMenuBySlug(slug)
     const categories = getMockCategoriesByRestaurant(restaurant?.restaurant.id ?? "");
     const products = categories.flatMap(category => getMockProductsByCategory(category.id));
+    const categoryIds = categories.map(category => category.id);
 
     return (
         <div className="flex flex-col px-4 md:px-8 pb-12 text-black w-full max-w-7xl mx-auto">
+            <CategorySectionObserver categoryIds={categoryIds} />
             {/* Categorias */}
             {categories.map(category => (
-                <div key={category.id} id={category.id} className="flex flex-col gap-5 pt-6 scroll-mt-24 pb-20">
+                <div key={category.id} id={category.id} className="flex flex-col gap-5 pt-6 scroll-mt-24 pb-65">
                     <div className="flex flex-row gap-4 items-center">
                         <h3 className="text-black text-lg md:text-xl font-genty whitespace-nowrap">{category.name}</h3>
                         <div className="flex-1 h-0.5 bg-slate-200 self-center"></div>
