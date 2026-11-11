@@ -2,9 +2,10 @@ import { Suspense } from "react";
 import CategoryList from "@/components/menu/CategoryList";
 import CategoryListSkeleton from "@/components/menu/CategoryListSkeleton";
 import MenuHeader from "@/components/menu/MenuHeader";
-import { getMockMenuBySlug } from "@/data/mock";
+import { getMockMenuBySlug, getMockCategoriesByRestaurant } from "@/data/mock";
 import { redirect } from "next/navigation";
 import CategoryNavBar from "@/components/menu/CategoryNavBar";
+import { ActiveCategoryProvider } from "@/components/menu/ActiveCategoryContext";
 
 interface CardapioProps {
     params: Promise<{
@@ -22,13 +23,17 @@ export default async function Cardapio({ params }: CardapioProps) {
         return redirect("/cardapio");
     }
 
+    const categories = getMockCategoriesByRestaurant(menu.restaurant.id);
+
     return (
-        <div className="flex flex-col justify-start  bg-background font-sans dark:bg-black text-white">
-            <MenuHeader slug={slug} />
-            <CategoryNavBar restaurantId={menu.restaurant.id} />
-            <Suspense fallback={<CategoryListSkeleton />}>
-                <CategoryList slug={slug} />
-            </Suspense>
-        </div>
+        <ActiveCategoryProvider>
+            <div className="flex flex-col justify-start  bg-background font-sans dark:bg-black text-white">
+                <MenuHeader slug={slug} />
+                <CategoryNavBar categories={categories} />
+                <Suspense fallback={<CategoryListSkeleton />}>
+                    <CategoryList slug={slug} />
+                </Suspense>
+            </div>
+        </ActiveCategoryProvider>
     )
 }
