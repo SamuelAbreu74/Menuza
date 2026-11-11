@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Imagem ilustrativa de prato</title>
+  <desc id="desc">Ilustração de um prato sobre fundo verde-claro, usada como imagem provisória nos dados mockados.</desc>
+  <rect width="640" height="420" rx="24" fill="#eef5e8"/>
+  <circle cx="320" cy="210" r="137" fill="#ffffff" stroke="#d6e4ce" stroke-width="10"/>
+  <circle cx="320" cy="210" r="105" fill="#faf8ef" stroke="#e3e6d9" stroke-width="4"/>
+  <path d="M252 171c24-22 53-17 68 2 14-14 35-14 50 2 13 14 12 37-3 48-25 18-84 14-111-5-15-10-17-33-4-47Z" fill="#d9a65a"/>
+  <circle cx="285" cy="232" r="18" fill="#6d9c55"/>
+  <circle cx="328" cy="247" r="14" fill="#8fb66f"/>
+  <circle cx="356" cy="223" r="16" fill="#6d9c55"/>
+  <path d="M264 267c28-14 71-14 107 0" fill="none" stroke="#d58b57" stroke-width="10" stroke-linecap="round"/>
+  <g fill="none" stroke="#376b45" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M180 115v56M164 115v26M196 115v26M180 171v45"/>
+    <path d="M454 115c0 32-1 47-15 61v55M439 176h30M469 115v116"/>
+  </g>
+  <text x="320" y="378" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#376b45">Imagem ilustrativa</text>
+</svg>
