@@ -1,4 +1,4 @@
-export default function Produtos() {
+export default function ProductPageAdmin() {
     return (
         <div>
             <h1>Produtos</h1>

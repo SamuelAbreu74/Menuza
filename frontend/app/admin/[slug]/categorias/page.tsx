@@ -1,7 +1,10 @@
-export default function Categorias() {
+import CategoryListAdmin from "@/components/admin/CategoryListAdmin"
+
+export default function CategoryPageAdmin() {
     return (
         <div>
-            <h1>Categorias</h1>
+            <CategoryListAdmin />
+            
         </div>
     )
 }
