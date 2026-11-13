@@ -38,21 +38,25 @@ export const mockCategories: Category[] = [
         id: "category-sabor-pratos-executivos",
         restaurantId: "restaurant-sabor-da-vila",
         name: "Pratos executivos",
+        icon: 'utensils'
     },
     {
         id: "category-sabor-salgados",
         restaurantId: "restaurant-sabor-da-vila",
         name: "Salgados",
+        icon: 'croissant'
     },
     {
         id: "category-sabor-doces",
         restaurantId: "restaurant-sabor-da-vila",
         name: "Doces",
+        icon: 'cake-slice'
     },
     {
         id: "category-sabor-bebidas",
         restaurantId: "restaurant-sabor-da-vila",
         name: "Bebidas",
+        icon: 'cup-soda'
     },
 
     // Tempero Mineiro
@@ -60,6 +64,7 @@ export const mockCategories: Category[] = [
         id: "category-tempero-bebidas",
         restaurantId: "restaurant-tempero-mineiro",
         name: "Bebidas",
+        icon: 'cup-soda'
     },
 
     // Cafeteria Helena
@@ -67,21 +72,25 @@ export const mockCategories: Category[] = [
         id: "category-helena-cafes",
         restaurantId: "restaurant-cafeteria-helena",
         name: "Cafés",
+        icon: 'coffee'
     },
     {
         id: "category-helena-doces",
         restaurantId: "restaurant-cafeteria-helena",
         name: "Doces",
+        icon: 'cake-slice'
     },
     {
         id: "category-helena-salgados",
         restaurantId: "restaurant-cafeteria-helena",
         name: "Salgados",
+        icon: 'croissant'
     },
     {
         id: "category-helena-bebidas",
         restaurantId: "restaurant-cafeteria-helena",
         name: "Bebidas",
+        icon: 'cup-soda'
     }
 ];
 
