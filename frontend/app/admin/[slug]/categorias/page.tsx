@@ -1,7 +1,7 @@
 import CategoryListAdmin from "@/components/admin/CategoryListAdmin"
 import { Suspense } from "react";
 import Button from "@/components/ui/Button";
-import { Plus, PlusCircle } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface AsyncCategoryPageAdminProps {
     params: Promise<{ slug: string }>;

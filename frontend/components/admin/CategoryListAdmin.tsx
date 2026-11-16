@@ -1,7 +1,7 @@
 "use client"
 import { getMockMenuBySlug } from "@/data/mock"
 import { categoryIcons } from "@/lib/category-icons";
-import { Pen, Trash, TriangleAlertIcon, TriangleExclamationPoint } from "lucide-react";
+import { Pen, Trash, TriangleExclamationPoint } from "lucide-react";
 import Button from "../ui/Button";
 import { useState } from "react";
 import DeleteModal from "../ui/DeleteModal";
@@ -20,7 +20,7 @@ export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
 
     // Abrir modal de Delete
     const handleDelete = (id: string) => {
-        setIsDeleteModalOpen(true)  
+        setIsDeleteModalOpen(true)
         setSelectedCategoryId(id)
     }
 
@@ -42,7 +42,7 @@ export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
                     <div className="flex flex-col gap-5 ">
                         <div className="flex items-center gap-5 mt-5">
                             <TriangleExclamationPoint size={60} className="w-auto h-auto text-red-700 bg-red-100 rounded-full p-3" />
-                            <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{mockMenu?.categories.find((c) => c.id === selectedCategoryId )?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
+                            <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{mockMenu?.categories.find((c) => c.id === selectedCategoryId)?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
                         </div>
                         <div className="flex w-full gap-5">
                             <Button className="flex-1 font-montserrat rounded-2xl hover:bg-gray-100" onClick={() => setIsDeleteModalOpen(false)}>Cancelar</Button>
@@ -50,13 +50,13 @@ export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
                         </div>
                     </div>
                 </DeleteModal>
-                
+
                 {mockMenu?.categories.map((category) => {
                     const Icon = category.icon
                         ? categoryIcons[category.icon as keyof typeof categoryIcons]
                         : categoryIcons.utensils;
-                        categoriesCounter++
-                        const categoriesCounterFormated = categoriesCounter.toString().padStart(2, '0')
+                    categoriesCounter++
+                    const categoriesCounterFormated = categoriesCounter.toString().padStart(2, '0')
                     return (
                         <div key={category.id} className="flex flex-col p-8 border border-black/10 bg-white/60 rounded-3xl min-h-60 min-w-fit">
 
