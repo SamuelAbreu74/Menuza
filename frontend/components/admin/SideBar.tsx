@@ -5,6 +5,7 @@ import RestaurantImage from "../ui/RestaurantImage"
 import { getMockMenuBySlug } from "../../data/mock"
 import Link from 'next/link'
 import { usePathname } from "next/navigation";
+import Image from 'next/image'
 
 export default function SideBar({ slug }: { slug: string }) {
 
@@ -25,7 +26,7 @@ export default function SideBar({ slug }: { slug: string }) {
         <aside className="flex flex-col justify-between w-fit min-h-screen bg-green-900 text-white shadow-lg border-r  ">
             <div className="px-5 py-8">
                 <div className="flex items-end gap-2 mb-10">
-                    <img className='w-10 h-10' src={logo.src} alt="Logo Menuza" />
+                    <Image width={40} height={40} src={logo.src} alt="Logo Menuza" />
                     <h1 className="text-3xl font-genty ">Menuza</h1>
                 </div>
 

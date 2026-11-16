@@ -174,7 +174,7 @@ export function CategorySectionObserver({ categoryIds }: { categoryIds: string[]
             observer.disconnect();
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [categoryIds, setActiveCategoryId]);
+    }, [categoryIds, setActiveCategoryId, isObserverLocked]);
 
     return null;
 }
