@@ -1,16 +1,29 @@
+"use client"
 import { getMockMenuBySlug } from "@/data/mock"
 import { categoryIcons } from "@/lib/category-icons";
-import { Pen, Trash } from "lucide-react";
+import { Pen, Trash, TriangleAlertIcon, TriangleExclamationPoint } from "lucide-react";
 import Button from "../ui/Button";
+import { useState } from "react";
+import DeleteModal from "../ui/DeleteModal";
 
 interface CategoryListAdminProps {
     slug: string
 }
 
 
-export default async function CategoryListAdmin({ slug }: CategoryListAdminProps) {
+export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
     const mockMenu = getMockMenuBySlug(slug)
     let categoriesCounter = 0;
+
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+
+    // Abrir modal de Delete
+    const handleDelete = (id: string) => {
+        setIsDeleteModalOpen(true)  
+        setSelectedCategoryId(id)
+    }
+
 
 
     return (
@@ -23,6 +36,21 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
                     </div>
                 }
 
+
+                {/* Modal de Exclusão */}
+                <DeleteModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="Excluir Categoria?"  >
+                    <div className="flex flex-col gap-5 ">
+                        <div className="flex items-center gap-5 mt-5">
+                            <TriangleExclamationPoint size={60} className="w-auto h-auto text-red-700 bg-red-100 rounded-full p-3" />
+                            <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{mockMenu?.categories.find((c) => c.id === selectedCategoryId )?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
+                        </div>
+                        <div className="flex w-full gap-5">
+                            <Button className="flex-1 font-montserrat rounded-2xl hover:bg-gray-100" onClick={() => setIsDeleteModalOpen(false)}>Cancelar</Button>
+                            <Button className="flex-1 bg-red-700 hover:bg-red-800 text-white font-semibold font-montserrat rounded-2xl" onClick={() => setIsDeleteModalOpen(false)}>Sim, excluir</Button>
+                        </div>
+                    </div>
+                </DeleteModal>
+                
                 {mockMenu?.categories.map((category) => {
                     const Icon = category.icon
                         ? categoryIcons[category.icon as keyof typeof categoryIcons]
@@ -54,7 +82,7 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
 
                             {/* Linha */}
                             <div className="h-px bg-gray-200 mt-5 mb-5"></div>
-                            
+
                             <div className="flex items-center justfiy-center gap-5">
                                 {/* botão de editar */}
                                 <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat">
@@ -62,8 +90,8 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
                                     <p>Editar</p>
                                 </Button>
                                 {/* Botão de excluir */}
-                                <Button className="hover:text-red-700 hover:bg-red-100 p-3.5 rounded-xl">
-                                    <Trash size={20} />
+                                <Button className="hover:text-red-700 hover:bg-red-100 p-3.5 rounded-xl" onClick={() => handleDelete(category.id)}>
+                                    <Trash size={20} strokeWidth={1.5} />
                                 </Button>
                             </div>
                         </div>
