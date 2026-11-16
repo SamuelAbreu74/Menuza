@@ -1,4 +1,4 @@
-import { getMockMenuBySlug, getMockCategoriesByRestaurant } from "@/data/mock"
+import { getMockMenuBySlug } from "@/data/mock"
 import { categoryIcons } from "@/lib/category-icons";
 import { Pen, Trash } from "lucide-react";
 import Button from "../ui/Button";
@@ -10,8 +10,7 @@ interface CategoryListAdminProps {
 
 export default async function CategoryListAdmin({ slug }: CategoryListAdminProps) {
     const mockMenu = getMockMenuBySlug(slug)
-    const mockCategories = getMockCategoriesByRestaurant(mockMenu?.restaurant.id || "")
-    var categoriesCounter = 0;
+    let categoriesCounter = 0;
 
 
     return (
