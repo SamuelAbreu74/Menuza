@@ -32,7 +32,7 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
                     return (
                         <div key={category.id} className="flex flex-col p-8 border border-black/10 bg-white/60 rounded-3xl min-h-60 min-w-fit">
 
-                            {/* Ícone da categoria */}
+                            {/* Ícone da categoria e contador */}
                             <div className="flex items-start justify-between">
                                 <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 text-green-900 mb-4">
                                     <Icon size={24} strokeWidth={1.8} />
@@ -43,12 +43,12 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
                             </div>
 
                             {/* Nome da categoria */}
-                            <h2 className="text-2xl font-semibold font-montserrat">
+                            <h2 className="text-2xl font-medium font-montserrat">
                                 {category.name}
                             </h2>
 
                             {/* Quantidade de produtos */}
-                            <p className="text-md">
+                            <p className="text-md text-gray-600 font-montserrat font-extralight">
                                 {category.products.length} produtos
                             </p>
 
@@ -57,12 +57,12 @@ export default async function CategoryListAdmin({ slug }: CategoryListAdminProps
                             
                             <div className="flex items-center justfiy-center gap-5">
                                 {/* botão de editar */}
-                                <Button className="gap-3 bg-gray-100 hover:bg-gray-200 font-medium text-sm font-montserrat">
+                                <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat">
                                     <Pen size={20} />
                                     <p>Editar</p>
                                 </Button>
                                 {/* Botão de excluir */}
-                                <Button className="flex-1 hover:text-red-700 hover:bg-red-100 p-3.5">
+                                <Button className="hover:text-red-700 hover:bg-red-100 p-3.5 rounded-xl">
                                     <Trash size={20} />
                                 </Button>
                             </div>
