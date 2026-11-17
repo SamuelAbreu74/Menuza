@@ -1,4 +1,5 @@
 "use client"
+
 import { getMockMenuBySlug } from "@/data/mock"
 import { categoryIcons } from "@/lib/category-icons";
 import { Pen, Trash, TriangleExclamationPoint } from "lucide-react";
@@ -8,10 +9,11 @@ import DeleteModal from "../ui/DeleteModal";
 
 interface CategoryListAdminProps {
     slug: string
+    onEditCategory: (id: string) => void;
 }
 
 
-export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
+export default function CategoryListAdmin({ slug, onEditCategory }: CategoryListAdminProps) {
     const mockMenu = getMockMenuBySlug(slug)
     let categoriesCounter = 0;
 
@@ -23,7 +25,6 @@ export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
         setIsDeleteModalOpen(true)
         setSelectedCategoryId(id)
     }
-
 
 
     return (
@@ -85,7 +86,7 @@ export default function CategoryListAdmin({ slug }: CategoryListAdminProps) {
 
                             <div className="flex items-center justfiy-center gap-5">
                                 {/* botão de editar */}
-                                <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat">
+                                <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat" onClick={() => onEditCategory(category.id)}>
                                     <Pen size={20} />
                                     <p>Editar</p>
                                 </Button>
