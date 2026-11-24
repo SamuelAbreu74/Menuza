@@ -6,14 +6,17 @@ import { Pen, Trash, TriangleExclamationPoint } from "lucide-react";
 import Button from "../ui/Button";
 import { useState } from "react";
 import DeleteModal from "../ui/DeleteModal";
+import type { Category } from "@/types/category";
 
 interface CategoryListAdminProps {
     slug: string
+    categories: Category[]
     onEditCategory: (id: string) => void;
+    onDeleteCategory: (id: string) => void;
 }
 
 
-export default function CategoryListAdmin({ slug, onEditCategory }: CategoryListAdminProps) {
+export default function CategoryListAdmin({ slug, onEditCategory, categories, onDeleteCategory }: CategoryListAdminProps) {
     const mockMenu = getMockMenuBySlug(slug)
     let categoriesCounter = 0;
 
@@ -26,12 +29,19 @@ export default function CategoryListAdmin({ slug, onEditCategory }: CategoryList
         setSelectedCategoryId(id)
     }
 
+    const handleConfirmDelete = () => {
+        if (!selectedCategoryId) return;
+        onDeleteCategory(selectedCategoryId);
+        setIsDeleteModalOpen(false);
+        setSelectedCategoryId(null);
+    }
+
 
     return (
         <div className="w-full flex flex-col gap-3" >
             <div className="grid grid-cols-3 gap-5">
                 {/* Estado de lista vazia */}
-                {mockMenu?.categories.length === 0 &&
+                {categories.length === 0 &&
                     <div className="col-span-3 flex justify-center items-center border border-black/10 bg-white/60 rounded-3xl shadow-xl min-h-60 min-w-fit">
                         <h1 className="text-2xl font-montserrat ">Nenhuma categoria encontrada</h1>
                     </div>
@@ -43,16 +53,16 @@ export default function CategoryListAdmin({ slug, onEditCategory }: CategoryList
                     <div className="flex flex-col gap-5 ">
                         <div className="flex items-center gap-5 mt-5">
                             <TriangleExclamationPoint size={60} className="w-auto h-auto text-red-700 bg-red-100 rounded-full p-3" />
-                            <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{mockMenu?.categories.find((c) => c.id === selectedCategoryId)?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
+                            <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{categories.find((c) => c.id === selectedCategoryId)?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
                         </div>
                         <div className="flex w-full gap-5">
                             <Button className="flex-1 font-montserrat rounded-2xl hover:bg-gray-100" onClick={() => setIsDeleteModalOpen(false)}>Cancelar</Button>
-                            <Button className="flex-1 bg-red-700 hover:bg-red-800 text-white font-semibold font-montserrat rounded-2xl" onClick={() => setIsDeleteModalOpen(false)}>Sim, excluir</Button>
+                            <Button className="flex-1 bg-red-700 hover:bg-red-800 text-white font-semibold font-montserrat rounded-2xl" onClick={() => handleConfirmDelete()}>Sim, excluir</Button>
                         </div>
                     </div>
                 </DeleteModal>
 
-                {mockMenu?.categories.map((category) => {
+                {categories.map((category) => {
                     const Icon = category.icon
                         ? categoryIcons[category.icon as keyof typeof categoryIcons]
                         : categoryIcons.utensils;
@@ -78,7 +88,7 @@ export default function CategoryListAdmin({ slug, onEditCategory }: CategoryList
 
                             {/* Quantidade de produtos */}
                             <p className="text-md text-gray-600 font-montserrat font-extralight">
-                                {category.products.length} produtos
+                                {mockMenu?.categories?.find((c) => c.id === category.id)?.products.length ?? 0} produtos
                             </p>
 
                             {/* Linha */}
