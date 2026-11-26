@@ -4,27 +4,22 @@
 import { getMockMenuBySlug, getMockProductsByCategory } from "@/data/mock"
 import ProductCard from "./ProductCard";
 import { CategorySectionObserver } from "./ActiveCategoryContext";
-import { useState, useEffect } from "react";
-import { MockMenuCategory } from "@/data/mock";
-import { listAllCategories } from "@/services/category.services";
+import { useCategories } from "@/hooks/useCategories";
 
 export default function CategoryList({ slug }: { slug: string }) {
     const restaurant = getMockMenuBySlug(slug)
-    // const categories = getMockCategoriesByRestaurant(restaurant?.restaurant.id ?? "");
-    const [categories, setCategories] = useState<MockMenuCategory[]>([]);
+    const restaurantId = restaurant?.restaurant.id;
+
+    const categories = useCategories(restaurantId);
     const products = categories.flatMap(category => getMockProductsByCategory(category.id));
     const categoryIds = categories.map(category => category.id);
 
-    useEffect(() => {
-        const storedCategories = listAllCategories(restaurant?.restaurant.id!);
-        const menuCategories = storedCategories.map(category => ({
-            ...category,
-            products: getMockProductsByCategory(category.id),
-        }));
 
-        setCategories(menuCategories);
 
-    }, [restaurant?.restaurant.id])
+    const menuCategories = categories.map(category => ({
+        ...category,
+        products: getMockProductsByCategory(category.id),
+    }));
 
 
 
@@ -39,7 +34,7 @@ export default function CategoryList({ slug }: { slug: string }) {
                 </div>
             )}
 
-            {categories.map(category => (
+            {menuCategories.map(category => (
                 <div key={category.id} id={category.id} className="flex flex-col gap-5 pt-6 scroll-mt-24 pb-65">
                     <div className="flex flex-row gap-4 items-center">
                         <h3 className="text-black text-lg md:text-xl font-genty whitespace-nowrap">{category.name}</h3>

@@ -2,7 +2,6 @@ import { mockCategories } from "@/data/mock";
 // Importa os types
 import type { Category } from "@/types/category";
 import type { CategoryIconName } from "@/lib/category-icons";
-import { error } from "console";
 
 // Cria a interface dos dados que vão ser inputados (contrato de dados)
 interface CreateCategoryInput {
@@ -15,13 +14,16 @@ interface EditCategoryInput {
     icon: CategoryIconName;
 }
 
-const STORAGE_KEY = "menuza:categories"
+
+export const CATEGORY_STORAGE_KEY = "menuza:categories";
+
+export const CATEGORY_STORAGE_EVENT = "menuza:categories-updated";
 
 
 // Função para recuperar todas as categorias do localStorage
 export function getAllCategories(): Category[] {
 
-    const storedCategories = localStorage.getItem(STORAGE_KEY)
+    const storedCategories = localStorage.getItem(CATEGORY_STORAGE_KEY)
 
     // Primeiro acesso inicializa os dados com o mock
     if (!storedCategories) {
@@ -57,7 +59,9 @@ export function getAllCategories(): Category[] {
 
 // Função de salvar todas as categorias
 export function saveAllCategories(categories: Category[]): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(categories));
+    localStorage.setItem(CATEGORY_STORAGE_KEY, JSON.stringify(categories));
+
+    window.dispatchEvent(new Event(CATEGORY_STORAGE_EVENT))
 }
 
 // Função para listar todas as categorias

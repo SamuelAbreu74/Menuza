@@ -8,10 +8,10 @@ import Button from "@/components/ui/Button";
 import CategoryListAdmin from "@/components/admin/CategoryListAdmin";
 import CreateAndEditCategoryModal from "@/components/ui/CreateAndEditCategoryModal";
 import { getMockMenuBySlug } from "@/data/mock";
-import { listAllCategories,createCategory, editCategory, deleteCategory } from "@/services/category.services";
-import { Category } from "@/types/category";
+import { listAllCategories, createCategory, editCategory, deleteCategory } from "@/services/category.services";
 import type { SubmitEvent } from "react";
 import { useEffect } from "react";
+import { useCategories } from "@/hooks/useCategories";
 
 interface CategoryAdminClientPageProps {
     slug: string;
@@ -23,9 +23,11 @@ export default function CategoryAdminClientPage({
 
     // Dados
     const restaurant = getMockMenuBySlug(slug);
+    const restaurantId = restaurant?.restaurant.id;
+    const categories = useCategories(restaurantId);
 
     // Estados para o input e categoria
-    const [categories, setCategories] = useState<Category[]>([])
+
     const [categoryName, setCategoryName] = useState("");
     const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
     const [selectedIcon, setSelectedIcon] = useState<CategoryIconName>("utensils");
@@ -64,7 +66,7 @@ export default function CategoryAdminClientPage({
         const name = categoryName.trim()
         if (!name) return;
 
-        const editedCategory = editCategory(restaurant.restaurant.id, selectedCategoryId!, {
+        editCategory(restaurant.restaurant.id, selectedCategoryId!, {
             name: name,
             icon: selectedIcon,
         })
@@ -73,15 +75,6 @@ export default function CategoryAdminClientPage({
 
         if (!category) return;
 
-
-        // atualizar estado com novo objeto
-        setCategories((currentCategories) =>
-            currentCategories.map((category) =>
-                category.id === editedCategory.id
-                    ? editedCategory
-                    : category
-            )
-        );
 
         handleCloseModal();
     }
@@ -96,17 +89,10 @@ export default function CategoryAdminClientPage({
         if (!name) return;
 
         // criar objeto da categoria
-        const newCategory = createCategory(restaurant.restaurant.id, {
+        createCategory(restaurant.restaurant.id, {
             name: name,
             icon: selectedIcon,
         });
-
-        // atualizar estado com novo objeto
-        setCategories((currentCategories) => [
-            ...currentCategories,
-            newCategory
-        ]);
-
 
         handleCloseModal();
     };
@@ -118,9 +104,6 @@ export default function CategoryAdminClientPage({
         deleteCategory(restaurant.restaurant.id, id);
 
 
-        setCategories(currentCategories =>
-            currentCategories.filter(category => category.id !== id)
-        );
     };
 
     // Fechar modal
@@ -134,9 +117,9 @@ export default function CategoryAdminClientPage({
     useEffect(() => {
         if (!restaurant?.restaurant.id) return;
 
-        const storedCategories = listAllCategories(restaurant.restaurant.id);
+        listAllCategories(restaurant.restaurant.id);
 
-        setCategories(storedCategories);
+        
     }, [restaurant?.restaurant.id])
 
     return (
