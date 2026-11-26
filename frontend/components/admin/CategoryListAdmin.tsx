@@ -18,7 +18,7 @@ interface CategoryListAdminProps {
 
 export default function CategoryListAdmin({ slug, onEditCategory, categories, onDeleteCategory }: CategoryListAdminProps) {
     const mockMenu = getMockMenuBySlug(slug)
-    let categoriesCounter = 0;
+    let categoriesCounter = 0;    
 
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
@@ -36,6 +36,10 @@ export default function CategoryListAdmin({ slug, onEditCategory, categories, on
         setSelectedCategoryId(null);
     }
 
+    const handleCloseDeleteModal = () => {
+        setIsDeleteModalOpen(false)
+        setSelectedCategoryId(null)
+    }
 
     return (
         <div className="w-full flex flex-col gap-3" >
@@ -49,15 +53,15 @@ export default function CategoryListAdmin({ slug, onEditCategory, categories, on
 
 
                 {/* Modal de Exclusão */}
-                <DeleteModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="Excluir Categoria?"  >
+                <DeleteModal isOpen={isDeleteModalOpen} onClose={handleCloseDeleteModal} title="Excluir Categoria?"  >
                     <div className="flex flex-col gap-5 ">
                         <div className="flex items-center gap-5 mt-5">
                             <TriangleExclamationPoint size={60} className="w-auto h-auto text-red-700 bg-red-100 rounded-full p-3" />
                             <p className="font-montserrat text-sm text-gray-600">A categoria <span className="font-bold text-black">{categories.find((c) => c.id === selectedCategoryId)?.name}</span> será removida do cardápio. Esta ação não pode ser desfeita.</p>
                         </div>
                         <div className="flex w-full gap-5">
-                            <Button className="flex-1 font-montserrat rounded-2xl hover:bg-gray-100" onClick={() => setIsDeleteModalOpen(false)}>Cancelar</Button>
-                            <Button className="flex-1 bg-red-700 hover:bg-red-800 text-white font-semibold font-montserrat rounded-2xl" onClick={() => handleConfirmDelete()}>Sim, excluir</Button>
+                            <Button className="flex-1 font-montserrat rounded-2xl hover:bg-gray-100" onClick={handleCloseDeleteModal}>Cancelar</Button>
+                            <Button className="flex-1 cursor-pointer bg-red-700 hover:bg-red-800 text-white font-semibold font-montserrat rounded-2xl" onClick={handleConfirmDelete}>Sim, excluir</Button>
                         </div>
                     </div>
                 </DeleteModal>
@@ -67,7 +71,10 @@ export default function CategoryListAdmin({ slug, onEditCategory, categories, on
                         ? categoryIcons[category.icon as keyof typeof categoryIcons]
                         : categoryIcons.utensils;
                     categoriesCounter++
+                    
                     const categoriesCounterFormated = categoriesCounter.toString().padStart(2, '0')
+                    const productsCount = mockMenu?.categories?.find((c) => c.id === category.id)?.products.length ?? 0
+                    
                     return (
                         <div key={category.id} className="flex flex-col p-8 border border-black/10 bg-white/60 rounded-3xl min-h-60 min-w-fit">
 
@@ -88,7 +95,7 @@ export default function CategoryListAdmin({ slug, onEditCategory, categories, on
 
                             {/* Quantidade de produtos */}
                             <p className="text-md text-gray-600 font-montserrat font-extralight">
-                                {mockMenu?.categories?.find((c) => c.id === category.id)?.products.length ?? 0} produtos
+                                {productsCount} produtos
                             </p>
 
                             {/* Linha */}
@@ -96,14 +103,22 @@ export default function CategoryListAdmin({ slug, onEditCategory, categories, on
 
                             <div className="flex items-center justfiy-center gap-5">
                                 {/* botão de editar */}
-                                <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat" onClick={() => onEditCategory(category.id)}>
+                                <Button className="flex-1 gap-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-sm font-montserrat cursor-pointer" onClick={() => onEditCategory(category.id)}>
                                     <Pen size={20} />
                                     <p>Editar</p>
                                 </Button>
                                 {/* Botão de excluir */}
-                                <Button className="hover:text-red-700 hover:bg-red-100 p-3.5 rounded-xl" onClick={() => handleDelete(category.id)}>
-                                    <Trash size={20} strokeWidth={1.5} />
-                                </Button>
+                                {productsCount !== 0 ? (
+                                    <Button className="opacity-50 grayscale cursor-not-allowed" title="Não é possível excluir uma categoria com produtos">
+                                        <Trash size={20} strokeWidth={1.5} />
+                                    </Button>
+                                ) : (
+                                    <Button className="hover:text-red-700 hover:bg-red-100 p-3.5 rounded-xl cursor-pointer" onClick={() => handleDelete(category.id)}>
+                                        <Trash size={20} strokeWidth={1.5} />
+                                    </Button>
+                                )}
+
+
                             </div>
                         </div>
                     );
