@@ -8,9 +8,10 @@ import Button from "@/components/ui/Button";
 import CategoryListAdmin from "@/components/admin/CategoryListAdmin";
 import CreateAndEditCategoryModal from "@/components/ui/CreateAndEditCategoryModal";
 import { getMockMenuBySlug } from "@/data/mock";
-import { createCategory, editCategory, deleteCategory } from "@/services/category.services";
+import { listAllCategories,createCategory, editCategory, deleteCategory } from "@/services/category.services";
 import { Category } from "@/types/category";
 import type { SubmitEvent } from "react";
+import { useEffect } from "react";
 
 interface CategoryAdminClientPageProps {
     slug: string;
@@ -24,9 +25,7 @@ export default function CategoryAdminClientPage({
     const restaurant = getMockMenuBySlug(slug);
 
     // Estados para o input e categoria
-    const [categories, setCategories] = useState<Category[]>(
-        () => restaurant?.categories ?? []
-    );
+    const [categories, setCategories] = useState<Category[]>([])
     const [categoryName, setCategoryName] = useState("");
     const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
     const [selectedIcon, setSelectedIcon] = useState<CategoryIconName>("utensils");
@@ -116,7 +115,12 @@ export default function CategoryAdminClientPage({
     const handleDeleteCategory = (id: string) => {
         if (!restaurant?.restaurant.id) return;
 
-        setCategories((currentCategories) => deleteCategory(currentCategories, restaurant.restaurant.id, id));
+        deleteCategory(restaurant.restaurant.id, id);
+
+
+        setCategories(currentCategories =>
+            currentCategories.filter(category => category.id !== id)
+        );
     };
 
     // Fechar modal
@@ -124,6 +128,16 @@ export default function CategoryAdminClientPage({
         setIsCategoryModalOpen(false);
         setSelectedCategoryId(null);
     };
+
+
+
+    useEffect(() => {
+        if (!restaurant?.restaurant.id) return;
+
+        const storedCategories = listAllCategories(restaurant.restaurant.id);
+
+        setCategories(storedCategories);
+    }, [restaurant?.restaurant.id])
 
     return (
         <div className="w-full flex flex-col gap-3 p-10">
