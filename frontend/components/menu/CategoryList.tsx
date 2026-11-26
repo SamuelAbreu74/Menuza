@@ -1,13 +1,32 @@
 
-import { getMockCategoriesByRestaurant, getMockMenuBySlug, getMockProductsByCategory } from "@/data/mock"
+"use client"
+
+import { getMockMenuBySlug, getMockProductsByCategory } from "@/data/mock"
 import ProductCard from "./ProductCard";
 import { CategorySectionObserver } from "./ActiveCategoryContext";
+import { useState, useEffect } from "react";
+import { MockMenuCategory } from "@/data/mock";
+import { listAllCategories } from "@/services/category.services";
 
-export default async function CategoryList({ slug }: { slug: string }) {
+export default function CategoryList({ slug }: { slug: string }) {
     const restaurant = getMockMenuBySlug(slug)
-    const categories = getMockCategoriesByRestaurant(restaurant?.restaurant.id ?? "");
+    // const categories = getMockCategoriesByRestaurant(restaurant?.restaurant.id ?? "");
+    const [categories, setCategories] = useState<MockMenuCategory[]>([]);
     const products = categories.flatMap(category => getMockProductsByCategory(category.id));
     const categoryIds = categories.map(category => category.id);
+
+    useEffect(() => {
+        const storedCategories = listAllCategories(restaurant?.restaurant.id!);
+        const menuCategories = storedCategories.map(category => ({
+            ...category,
+            products: getMockProductsByCategory(category.id),
+        }));
+
+        setCategories(menuCategories);
+
+    }, [restaurant?.restaurant.id])
+
+
 
     return (
         <div className="flex flex-col px-4 md:px-8 pb-12 text-black w-full max-w-7xl mx-auto">
